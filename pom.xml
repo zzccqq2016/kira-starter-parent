@@ -31,6 +31,14 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.kira</groupId>
+            <artifactId>kira-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
 
 
 </project>
