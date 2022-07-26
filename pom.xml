@@ -4,13 +4,33 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>kira.boot</groupId>
-    <artifactId>kira-boot-dependencies</artifactId>
-    <version>1.0.0</version>
+    <parent>
+        <groupId>org.kira</groupId>
+        <artifactId>kira-dependencies</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../kira-dependencies</relativePath>
+    </parent>
+
+    <artifactId>kira-starter-parent</artifactId>
+    <packaging>pom</packaging>
+
+
+
+    <name>Kira Starter Parent</name>
+    <description>....</description>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <java.version>1.8</java.version>
+        <resource.delimiter>@</resource.delimiter>
+
+
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
+
+
 
 </project>
