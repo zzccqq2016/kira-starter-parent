@@ -32,11 +32,15 @@
     <dependencyManagement>
 
         <dependencies>
+
+            <!-- spring boot 版本-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>${spring.boot.version}</version>
             </dependency>
+
+            <!-- spring cloud 版本-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -45,6 +49,7 @@
                 <scope>import</scope>
             </dependency>
 
+            <!-- spring cloud alibaba 版本-->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
@@ -53,7 +58,7 @@
                 <scope>import</scope>
             </dependency>
 
-
+            <!--hutool 版本-->
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
