@@ -23,10 +23,12 @@
         <!-- maven.build.timestamp.format表示属性{maven.build.timestamp}的展示格式,默认值为yyyyMMdd-HHmm,可自定义其格式, -->
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
 
+        <security-oauth2.version>2.5.2.RELEASE</security-oauth2.version>
 
         <hutool.version>5.7.1</hutool.version>
         <poi.version>5.2.2</poi.version>
-        <csv-version>1.9.0</csv-version>
+        <csv.version>1.9.0</csv.version>
+        <fastjson.version>2.0.10</fastjson.version>
     </properties>
 
     <dependencyManagement>
@@ -51,7 +53,14 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- spring boot 版本-->
+            <!-- spring boot starter 版本-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!-- spring boot web 版本-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
@@ -73,11 +82,44 @@
                 <optional>true</optional>
             </dependency>
 
+            <!-- oauth2 -->
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>${security-oauth2.version}</version>
+                <exclusions>
+                    <!-- 排除oauth2依赖版本。漏洞问题-->
+                    <exclusion>
+                        <groupId>org.springframework.security</groupId>
+                        <artifactId>spring-security-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-beans</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-context</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-core</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
             <!--hutool 版本-->
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
+            </dependency>
+
+            <!-- fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
             </dependency>
 
             <dependency>
@@ -93,7 +135,7 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-csv</artifactId>
-                <version>${csv-version}</version>
+                <version>${csv.version}</version>
             </dependency>
 
         </dependencies>
