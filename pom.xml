@@ -2,225 +2,49 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.kira</groupId>
+        <artifactId>kira-dependencies</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../kira-dependencies</relativePath>
+    </parent>
 
-    <groupId>org.kira</groupId>
-    <artifactId>kira-dependencies</artifactId>
-    <version>1.0.0</version>
+    <artifactId>kira-starter-parent</artifactId>
     <packaging>pom</packaging>
 
-    <name>Kira Dependencies</name>
-    <description>Spring Boot and Spring Cloud Dependencies</description>
+
+
+    <name>Kira Starter Parent</name>
+    <description>....</description>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <spring.boot.version>2.6.11</spring.boot.version>
-        <spring-cloud.version>2020.0.3</spring-cloud.version>
-        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
-        <!-- maven.build.timestamp.format表示属性{maven.build.timestamp}的展示格式,默认值为yyyyMMdd-HHmm,可自定义其格式, -->
-        <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <security-oauth2.version>2.5.2.RELEASE</security-oauth2.version>
+        <java.version>1.8</java.version>
+        <resource.delimiter>@</resource.delimiter>
 
-        <hutool.version>5.7.1</hutool.version>
-        <poi.version>5.2.2</poi.version>
-        <csv.version>1.9.0</csv.version>
-        <fastjson.version>2.0.10</fastjson.version>
+
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
 
-    <dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.kira</groupId>
+            <artifactId>kira-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
-        <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
 
-            <!-- spring cloud 版本-->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+    </dependencies>
 
-            <!-- spring cloud alibaba 版本-->
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${spring-cloud-alibaba.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <!-- spring boot starter 版本-->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter</artifactId>
-                <version>${spring.boot.version}</version>
-            </dependency>
-
-            <!-- spring boot web 版本-->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>${spring.boot.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <version>${spring.boot.version}</version>
-            </dependency>
-
-            <!-- spring security 版本 spring-boot-starter-security 就是引入了 core config web三个包 -->
-            <!--            <dependency>-->
-            <!--                <groupId>org.springframework.boot</groupId>-->
-            <!--                <artifactId>spring-boot-starter-security</artifactId>-->
-            <!--                <version>${spring.boot.version}</version>-->
-            <!--            </dependency>-->
-            <dependency>
-                <groupId>org.springframework.security</groupId>
-                <artifactId>spring-security-core</artifactId>
-                <version>5.6.7</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.security</groupId>
-                <artifactId>spring-security-config</artifactId>
-                <version>5.6.7</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.security</groupId>
-                <artifactId>spring-security-web</artifactId>
-                <version>5.6.7</version>
-            </dependency>
-
-
-            <!--  -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-configuration-processor</artifactId>
-                <version>${spring.boot.version}</version>
-                <optional>true</optional>
-            </dependency>
-
-            <!-- oauth2 -->
-            <!--            <dependency>-->
-            <!--                <groupId>org.springframework.security.oauth</groupId>-->
-            <!--                <artifactId>spring-security-oauth2</artifactId>-->
-            <!--                <version>${security-oauth2.version}</version>-->
-            <!--                <exclusions>-->
-            <!--                    &lt;!&ndash; 排除oauth2依赖版本。漏洞问题&ndash;&gt;-->
-            <!--                    <exclusion>-->
-            <!--                        <groupId>org.springframework.security</groupId>-->
-            <!--                        <artifactId>spring-security-core</artifactId>-->
-            <!--                    </exclusion>-->
-            <!--                    <exclusion>-->
-            <!--                        <groupId>org.springframework</groupId>-->
-            <!--                        <artifactId>spring-beans</artifactId>-->
-            <!--                    </exclusion>-->
-            <!--                    <exclusion>-->
-            <!--                        <groupId>org.springframework</groupId>-->
-            <!--                        <artifactId>spring-context</artifactId>-->
-            <!--                    </exclusion>-->
-            <!--                    <exclusion>-->
-            <!--                        <groupId>org.springframework</groupId>-->
-            <!--                        <artifactId>spring-core</artifactId>-->
-            <!--                    </exclusion>-->
-            <!--                </exclusions>-->
-            <!--            </dependency>-->
-
-
-            <!--Mysql 驱动-->
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.30</version>
-            </dependency>
-
-            <!-- jpa -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-data-jpa</artifactId>
-                <version>2.6.11</version>
-            </dependency>
-
-
-            <!--hutool 版本-->
-            <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-all</artifactId>
-                <version>${hutool.version}</version>
-            </dependency>
-
-            <!-- fastjson -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi</artifactId>
-                <version>${poi.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi-ooxml</artifactId>
-                <version>${poi.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-csv</artifactId>
-                <version>${csv.version}</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.24</version>
-            </dependency>
-
-        </dependencies>
-
-    </dependencyManagement>
-
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <!-- 参考：https://blog.csdn.net/qq_40708942/article/details/124579623 -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring.boot.version}</version>
-                    <executions>
-                        <execution>
-                            <id>repackage</id>
-                            <!-- repackage只会将其依赖的包重新打包，并不是将整个项目的依赖包都加入。 -->
-                            <goals>
-                                <goal>repackage</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.22.2</version>
-                </plugin>
-
-            </plugins>
-        </pluginManagement>
-    </build>
 
 
 </project>
