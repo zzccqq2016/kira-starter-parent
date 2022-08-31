@@ -67,12 +67,34 @@
                 <version>${spring.boot.version}</version>
             </dependency>
 
-            <!-- spring security 版本-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-security</artifactId>
+                <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring.boot.version}</version>
             </dependency>
+
+            <!-- spring security 版本 spring-boot-starter-security 就是引入了 core config web三个包 -->
+            <!--            <dependency>-->
+            <!--                <groupId>org.springframework.boot</groupId>-->
+            <!--                <artifactId>spring-boot-starter-security</artifactId>-->
+            <!--                <version>${spring.boot.version}</version>-->
+            <!--            </dependency>-->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core</artifactId>
+                <version>5.6.7</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-config</artifactId>
+                <version>5.6.7</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-web</artifactId>
+                <version>5.6.7</version>
+            </dependency>
+
 
             <!--  -->
             <dependency>
@@ -83,30 +105,46 @@
             </dependency>
 
             <!-- oauth2 -->
+<!--            <dependency>-->
+            <!--                <groupId>org.springframework.security.oauth</groupId>-->
+            <!--                <artifactId>spring-security-oauth2</artifactId>-->
+            <!--                <version>${security-oauth2.version}</version>-->
+            <!--                <exclusions>-->
+            <!--                    &lt;!&ndash; 排除oauth2依赖版本。漏洞问题&ndash;&gt;-->
+            <!--                    <exclusion>-->
+            <!--                        <groupId>org.springframework.security</groupId>-->
+            <!--                        <artifactId>spring-security-core</artifactId>-->
+            <!--                    </exclusion>-->
+            <!--                    <exclusion>-->
+            <!--                        <groupId>org.springframework</groupId>-->
+            <!--                        <artifactId>spring-beans</artifactId>-->
+            <!--                    </exclusion>-->
+            <!--                    <exclusion>-->
+            <!--                        <groupId>org.springframework</groupId>-->
+            <!--                        <artifactId>spring-context</artifactId>-->
+            <!--                    </exclusion>-->
+            <!--                    <exclusion>-->
+            <!--                        <groupId>org.springframework</groupId>-->
+            <!--                        <artifactId>spring-core</artifactId>-->
+            <!--                    </exclusion>-->
+            <!--                </exclusions>-->
+            <!--            </dependency>-->
+
+
+            <!--Mysql 驱动-->
             <dependency>
-                <groupId>org.springframework.security.oauth</groupId>
-                <artifactId>spring-security-oauth2</artifactId>
-                <version>${security-oauth2.version}</version>
-                <exclusions>
-                    <!-- 排除oauth2依赖版本。漏洞问题-->
-                    <exclusion>
-                        <groupId>org.springframework.security</groupId>
-                        <artifactId>spring-security-core</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring-beans</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring-context</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring-core</artifactId>
-                    </exclusion>
-                </exclusions>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.30</version>
             </dependency>
+
+            <!-- jpa -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>2.6.11</version>
+            </dependency>
+
 
             <!--hutool 版本-->
             <dependency>
@@ -136,6 +174,13 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-csv</artifactId>
                 <version>${csv.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.24</version>
             </dependency>
 
         </dependencies>
